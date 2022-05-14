@@ -15,4 +15,8 @@ describe('StudentController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  it('POST - StudentController - should be defined ', () => {
+    expect(controller.login).toBeDefined();
+  });
 });

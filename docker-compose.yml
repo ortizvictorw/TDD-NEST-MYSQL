@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  academy-auth:
+      container_name: academy-auth-service
+      restart: always
+      build: ./academy-auth
+      ports:
+          - "3002:3000"
+      volumes:
+          - .:/academy-auth/usr/src/app
+          - '/academy-auth/usr/src/app/node_modules'
+      depends_on:
+            - database
+
+  academy-back:
+      container_name: academy-back
+      restart: always
+      build: ./academy-back
+      ports:
+        - "3001:3000"
+      volumes:
+        - .:/academy-back/usr/src/app
+        - '/academy-back/usr/src/app/node_modules'
+      depends_on:
+            - database
+
+  academy-front:
+      container_name: academy-front
+      restart: always
+      build: ./academy-front
+      ports:
+        - "3000:3000"
+      volumes:
+        - .:/academy-front/usr/src/app   
+        - '/academy-front/usr/src/app/node_modules'
+      depends_on:
+            - database
+  
+  database:
+    image: mysql:5.6
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - "./.mysql-data/db:/var/lib/mysql"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: academy
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 'root'

@@ -10,7 +10,7 @@
 
 # installation required
 
-Visualize the project as followsWith
+Visualize the project as follows..
 
  [Install Docker](https://docs.docker.com/desktop/windows/install/)
 

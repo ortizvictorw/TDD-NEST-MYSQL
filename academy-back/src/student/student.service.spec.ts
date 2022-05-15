@@ -1,6 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { studentLoginMock } from '../common/mocks';
 import { StudentRepository } from './student-repository';
 import { StudentService } from './student.service';
+
+jest.mock('./student-repository');
 
 describe('StudentService', () => {
   let service: StudentService;
@@ -21,5 +24,10 @@ describe('StudentService', () => {
 
   it('StundtService - repository.authLogin - should be defined ', () => {
     expect(repository.authLogin).toBeDefined();
+  });
+
+  it('repository - repository.authLogin - should  receive a studentDTO ', () => {
+    repository.authLogin(studentLoginMock);
+    expect(repository.authLogin).toBeCalledWith(studentLoginMock);
   });
 });

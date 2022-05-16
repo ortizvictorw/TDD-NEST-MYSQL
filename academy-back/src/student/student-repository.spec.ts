@@ -23,4 +23,8 @@ describe('StudentRepository', () => {
     expect(repository.authLogin).toBeDefined();
   });
 
+  it('UserRepository - authRegister - should be defined ', () => {
+    expect(repository.authRegister).toBeDefined();
+  });
+
 });

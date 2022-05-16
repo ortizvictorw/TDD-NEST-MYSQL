@@ -6,4 +6,7 @@ import { StudentLoginDto } from './dto/studentLogin.dto';
 export class AuthController {
   @Post('/login')
   login(studentLogin: StudentLoginDto) {}
+
+  @Post('/register')
+  register(studentLogin: StudentLoginDto) {}
 }

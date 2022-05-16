@@ -18,11 +18,11 @@ export class StudentRepository {
 
   async authRegister(studentRegister: StudentLoginDto): Promise<any> {
     const url = 'http://localhost:3001/auth/register';
-    const data: AxiosResponse = await lastValueFrom(
+    const newUser: AxiosResponse<StudentLoginDto> = await lastValueFrom(
       this.httpService
         .post(url, studentRegister)
         .pipe(map((resp) => resp.data)),
     );
-    return data;
+    return newUser;
   }
 }

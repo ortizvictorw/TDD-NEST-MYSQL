@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { AuthRepositoryService } from './auth-repository.service';
 import { StudentLoginDto } from './dto/studentLogin.dto';
 
@@ -9,6 +9,17 @@ export class AuthService {
     return this.authRepositoryService.login(studentLogin);
   }
   async register(studentLogin: StudentLoginDto) {
-    return await this.authRepositoryService.register(studentLogin);
+    try {
+      return await this.authRepositoryService.register(studentLogin);
+    } catch (error) {
+      console.error(error);
+      if (error.code === 'ER_DUP_ENTRY') {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: ['Email already exists'],
+          error: 'Bad Request',
+        };
+      }
+    }
   }
 }

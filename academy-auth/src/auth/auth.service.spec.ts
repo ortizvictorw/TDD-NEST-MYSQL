@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { studentLoginMock } from '../common/mocks';
 import { AuthRepositoryService } from './auth-repository.service';
 import { AuthService } from './auth.service';
+jest.mock('./auth-repository.service.ts');
 
 describe('AuthService', () => {
   let service: AuthService;

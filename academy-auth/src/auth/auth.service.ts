@@ -1,8 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import { AuthRepositoryService } from './auth-repository.service';
 import { StudentLoginDto } from './dto/studentLogin.dto';
 
 @Injectable()
 export class AuthService {
-  login(studentLogin: StudentLoginDto) {}
-  register(studentLogin: StudentLoginDto) {}
+  constructor(private readonly authRepositoryService: AuthRepositoryService) {}
+  login(studentLogin: StudentLoginDto) {
+    return this.authRepositoryService.login(studentLogin);
+  }
+  register(studentLogin: StudentLoginDto) {
+    return this.authRepositoryService.register(studentLogin);
+  }
 }

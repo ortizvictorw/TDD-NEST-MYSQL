@@ -28,12 +28,16 @@ describe('AuthController', () => {
   });
 
   it('service.login - should be defined witch studentDto', () => {
-    service.login(studentLoginMock)
+    service.login(studentLoginMock);
     expect(service.login).toBeCalledWith(studentLoginMock);
   });
 
   it('POST - AuthController - controller.register - should be defined ', () => {
     expect(controller.register).toBeDefined();
   });
-;
+
+  it('service.register - should be defined witch studentDto', () => {
+    service.register(studentLoginMock);
+    expect(service.register).toBeCalledWith(studentLoginMock);
+  });
 });

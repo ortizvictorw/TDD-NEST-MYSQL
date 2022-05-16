@@ -6,7 +6,7 @@ services:
       restart: always
       build: ./academy-auth
       ports:
-          - "3002:3000"
+          - "3001:3001"
       volumes:
           - .:/academy-auth/usr/src/app
           - '/academy-auth/usr/src/app/node_modules'
@@ -18,7 +18,7 @@ services:
       restart: always
       build: ./academy-back
       ports:
-        - "3001:3000"
+        - "3002:3002"
       volumes:
         - .:/academy-back/usr/src/app
         - '/academy-back/usr/src/app/node_modules'

@@ -8,4 +8,8 @@ export class StudentService {
   async login(studentLogin: StudentLoginDto): Promise<any> {
     return await this.studentRepository.authLogin(studentLogin);
   }
+
+  async register(studentRegister: StudentLoginDto): Promise<any> {
+    return await this.studentRepository.authLogin(studentRegister);
+  }
 }

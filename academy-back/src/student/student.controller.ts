@@ -10,4 +10,9 @@ export class StudentController {
   async login(@Body() studentLogin: StudentLoginDto): Promise<any> {
     return await this.studentService.login(studentLogin);
   }
+
+  @Post('/register')
+  async register(@Body() studentRegister: StudentLoginDto): Promise<any> {
+    return await this.studentService.register(studentRegister);
+  }
 }

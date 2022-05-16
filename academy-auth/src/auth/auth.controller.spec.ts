@@ -26,4 +26,8 @@ describe('AuthController', () => {
   it('POST - AuthController - should be defined ', () => {
     expect(controller.login).toBeDefined();
   });
+
+  it('AuthController - service.register - should be defined ', () => {
+    expect(service.register).toBeDefined();
+  });
 });

@@ -27,7 +27,13 @@ describe('AuthController', () => {
     expect(controller.login).toBeDefined();
   });
 
-  it('AuthController - controller.register - should be defined ', () => {
+  it('service.login - should be defined witch studentDto', () => {
+    service.login(studentLoginMock)
+    expect(service.login).toBeCalledWith(studentLoginMock);
+  });
+
+  it('POST - AuthController - controller.register - should be defined ', () => {
     expect(controller.register).toBeDefined();
   });
+;
 });

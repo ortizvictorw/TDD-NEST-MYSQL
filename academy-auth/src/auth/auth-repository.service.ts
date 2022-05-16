@@ -13,8 +13,8 @@ export class AuthRepositoryService {
   login(studentLogin: StudentLoginDto) {}
 
   async register(studentRegister: StudentLoginDto): Promise<Student> {
-    const { password, userName } = studentRegister;
-    const newStudent = this.authRepo.create({ password, userName });
+    const { password, userName, email } = studentRegister;
+    const newStudent = this.authRepo.create({ password, userName, email });
     return await this.authRepo.save(newStudent);
   }
 }

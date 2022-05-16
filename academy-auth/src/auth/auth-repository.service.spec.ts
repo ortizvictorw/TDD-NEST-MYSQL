@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { studentLoginMock } from '../common/mocks';
+import { studentRegisterMock } from '../common/mocks';
 import { AuthRepositoryService } from './auth-repository.service';
 
 jest.mock('./auth-repository.service.ts');
@@ -20,7 +20,7 @@ describe('AuthRepositoryService', () => {
   });
 
   it('repository.register - should be defined witch studentDto', () => {
-    repository.register(studentLoginMock);
-    expect(repository.register).toBeCalledWith(studentLoginMock);
+    repository.register(studentRegisterMock);
+    expect(repository.register).toBeCalledWith(studentRegisterMock);
   });
 });

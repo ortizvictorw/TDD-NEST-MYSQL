@@ -12,7 +12,7 @@ export class AuthController {
   }
 
   @Post('/register')
-  register(studentRegister: StudentLoginDto) {
-    return this.auhtService.register(studentRegister);
+  async register(studentRegister: StudentLoginDto) {
+    return await this.auhtService.register(studentRegister);
   }
 }

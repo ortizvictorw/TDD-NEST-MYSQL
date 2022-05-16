@@ -8,7 +8,7 @@ export class AuthService {
   login(studentLogin: StudentLoginDto) {
     return this.authRepositoryService.login(studentLogin);
   }
-  register(studentLogin: StudentLoginDto) {
-    return this.authRepositoryService.register(studentLogin);
+  async register(studentLogin: StudentLoginDto) {
+    return await this.authRepositoryService.register(studentLogin);
   }
 }

@@ -11,5 +11,8 @@ export class AuthRepositoryService {
     private readonly authRepo: Repository<Student>,
   ) {}
   login(studentLogin: StudentLoginDto) {}
-  register(studentRegister: StudentLoginDto) {}
+
+  async register(studentRegister: StudentLoginDto): Promise<Student> {
+    return this.authRepo.create(studentRegister);
+  }
 }

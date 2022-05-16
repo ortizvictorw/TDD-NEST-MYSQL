@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { studentLoginMock } from '../common/mocks';
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
@@ -14,5 +15,10 @@ describe('AuthService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+  });
+
+  it('service.login - should be defined witch studentDto', () => {
+    service.login(studentLoginMock);
+    expect(service.login).toBeCalledWith(studentLoginMock);
   });
 });

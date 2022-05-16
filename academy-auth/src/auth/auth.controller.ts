@@ -12,5 +12,7 @@ export class AuthController {
   }
 
   @Post('/register')
-  register(studentLogin: StudentLoginDto) {}
+  register(studentLogin: StudentLoginDto) {
+    return this.auhtService.register(studentLogin);
+  }
 }

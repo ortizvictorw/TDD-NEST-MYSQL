@@ -48,5 +48,5 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: academy
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 'root'
+      MYSQL_USER: academy_root
+      MYSQL_PASSWORD: 'academypasword'

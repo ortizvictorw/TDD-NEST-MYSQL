@@ -1,3 +1,4 @@
+import { HttpModule } from '@nestjs/axios';
 import { Test, TestingModule } from '@nestjs/testing';
 import { studentLoginMock } from '../common/mocks';
 import { StudentController } from './student.controller';
@@ -10,6 +11,7 @@ describe('StudentController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [HttpModule],
       controllers: [StudentController],
       providers: [StudentService],
     }).compile();
@@ -26,8 +28,13 @@ describe('StudentController', () => {
     expect(controller.login).toBeDefined();
   });
 
-  it('POST - service.save - should  receive a studentDTO ', () => {
+  it('POST - service.login - should  receive a studentDTO ', () => {
     controller.login(studentLoginMock);
     expect(service.login).toBeDefined();
+  });
+
+  it('POST - service.register - should  receive a studentDTO ', () => {
+    controller.register(studentLoginMock);
+    expect(service.register).toBeDefined();
   });
 });

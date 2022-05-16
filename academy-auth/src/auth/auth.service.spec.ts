@@ -20,6 +20,11 @@ describe('AuthService', () => {
     expect(service).toBeDefined();
   });
 
+  it('repository.login - should be defined witch studentDto', () => {
+    repository.login(studentLoginMock);
+    expect(repository.login).toBeCalledWith(studentLoginMock);
+  });
+
   it('repository.register - should be defined witch studentDto', () => {
     repository.register(studentLoginMock);
     expect(repository.register).toBeCalledWith(studentLoginMock);

@@ -10,6 +10,6 @@ export class StudentService {
   }
 
   async register(studentRegister: StudentLoginDto): Promise<any> {
-    return await this.studentRepository.authLogin(studentRegister);
+    return await this.studentRepository.authRegister(studentRegister);
   }
 }

@@ -1,4 +1,5 @@
 import { Post } from '@nestjs/common';
+import { Body } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { StudentLoginDto } from './dto/studentLogin.dto';
@@ -12,7 +13,7 @@ export class AuthController {
   }
 
   @Post('/register')
-  async register(studentRegister: StudentLoginDto) {
+  async register(@Body() studentRegister: StudentLoginDto) {
     return await this.auhtService.register(studentRegister);
   }
 }

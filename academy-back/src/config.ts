@@ -9,5 +9,9 @@ export default registerAs('config', () => {
       user: process.env.MYSQL_USER,
       host: process.env.DATABASE_HOST,
     },
+    dbConfig:{
+      synchronize: process.env.SYNCHONIZE_DATABASE,
+      autoLoadEntities: process.env.AUTO_LOAD_ENTITIES_DATABASE,
+    }
   };
 });

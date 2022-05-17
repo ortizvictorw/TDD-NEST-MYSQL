@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { StudentLCreateDto, StudentLoginDto } from './dto/studentLogin.dto';
 import { Student } from './entities/student.entity';
-import * as bcrypt from 'bcrypt';
+import { hash } from 'bcryptjs';
 
 @Injectable()
 export class AuthRepositoryService {
@@ -14,8 +14,7 @@ export class AuthRepositoryService {
   login(studentLogin: StudentLoginDto) {}
 
   private async registerHash(password: string): Promise<string> {
-    const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(password, salt);
+    return await hash(password, 10);
   }
 
   async register(studentRegister: StudentLoginDto): Promise<StudentLCreateDto> {

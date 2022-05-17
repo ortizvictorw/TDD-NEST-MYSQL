@@ -1,9 +1,9 @@
 import { HttpModule } from '@nestjs/axios';
 import { Test, TestingModule } from '@nestjs/testing';
-import { studentLoginMock } from '../common/mocks';
-import { StudentController } from './student.controller';
-import { StudentService } from './student.service';
-jest.mock('./student.service');
+import { studentLoginMock } from '../../common/mocks';
+import { StudentController } from '../student.controller';
+import { StudentService } from '../student.service';
+jest.mock('../student.service');
 
 describe('StudentController', () => {
   let controller: StudentController;

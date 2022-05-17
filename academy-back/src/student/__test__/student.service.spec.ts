@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { studentLoginMock } from '../common/mocks';
-import { StudentRepository } from './student-repository';
-import { StudentService } from './student.service';
+import { studentLoginMock } from '../../common/mocks';
+import { StudentRepository } from '../student-repository';
+import { StudentService } from '../student.service';
 
-jest.mock('./student-repository');
+jest.mock('../student-repository');
 
 describe('StudentService', () => {
   let service: StudentService;

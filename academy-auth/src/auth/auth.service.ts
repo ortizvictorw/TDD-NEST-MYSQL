@@ -1,6 +1,6 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { AuthRepositoryService } from './auth-repository.service';
-import { StudentLoginDto } from './dto/studentLogin.dto';
+import { StudentLCreateDto, StudentLoginDto } from './dto/studentLogin.dto';
 
 @Injectable()
 export class AuthService {
@@ -8,7 +8,9 @@ export class AuthService {
   login(studentLogin: StudentLoginDto) {
     return this.authRepositoryService.login(studentLogin);
   }
-  async register(studentLogin: StudentLoginDto) {
+  async register(
+    studentLogin: StudentLoginDto,
+  ): Promise<StudentLCreateDto | any> {
     try {
       return await this.authRepositoryService.register(studentLogin);
     } catch (error) {

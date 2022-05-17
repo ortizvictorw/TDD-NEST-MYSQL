@@ -1,7 +1,7 @@
 import { HttpModule } from '@nestjs/axios';
 import { Test, TestingModule } from '@nestjs/testing';
-import { StudentRepository } from './student-repository';
-import { StudentService } from './student.service';
+import { StudentRepository } from '../student-repository';
+import { StudentService } from '../student.service';
 
 describe('StudentRepository', () => {
   let repository: StudentRepository;

@@ -1,21 +1,19 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
-import { Student } from './auth/entities/student.entity';
+import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from '@nestjs/config';
+import config from './config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'root',
-      database: 'academy',
-      entities: [Student],
-      synchronize: true,
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      load: [config],
+      isGlobal: true,
     }),
+
     AuthModule,
+    DatabaseModule,
   ],
 })
 export class AppModule {}

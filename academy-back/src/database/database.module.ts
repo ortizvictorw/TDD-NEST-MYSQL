@@ -8,9 +8,8 @@ import config from '../config';
   imports: [
     TypeOrmModule.forRootAsync({
       inject: [config.KEY],
-      useFactory: ({ mysql, dbConfig }: ConfigType<typeof config>): any => {
+      useFactory: ({ mysql }: ConfigType<typeof config>): any => {
         const { user, host, dbName, password, port } = mysql;
-        const { autoLoadEntities, synchronize } = dbConfig;
         return {
           type: 'mysql',
           host,
@@ -18,8 +17,8 @@ import config from '../config';
           username: user,
           password,
           database: dbName,
-          synchronize,
-          autoLoadEntities,
+          synchronize: true,
+          autoLoadEntities: true,
         };
       },
     }),

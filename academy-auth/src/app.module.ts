@@ -4,7 +4,6 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import config from './config';
 import { enviroments } from './enviroment';
-
 import * as Joi from 'joi';
 
 @Module({
@@ -15,11 +14,10 @@ import * as Joi from 'joi';
       isGlobal: true,
       validationSchema: Joi.object({
         MYSQL_USER: Joi.string().required(),
-        DATABASE_HOST: Joi.string().required(),
+        MYSQL_DATABASE_HOST: Joi.string().required(),
         MYSQL_DATABASE: Joi.string().required(),
         MYSQL_PASSWORD: Joi.any().required(),
-        SYNCHONIZE_DATABASE: Joi.string().required(),
-        AUTO_LOAD_ENTITIES_DATABASE: Joi.string().required(),
+        MYSQL_DATABASE_PORT: Joi.number().required(),
       }),
     }),
 

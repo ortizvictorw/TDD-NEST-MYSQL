@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import config from './config';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
-
 import { StudentModule } from './student/student.module';
+import { enviroments } from './enviroment';
+import config from './config';
+
+import * as Joi from 'joi';
 
 @Module({
   imports: [
@@ -11,6 +13,14 @@ import { StudentModule } from './student/student.module';
       envFilePath: enviroments[process.env.NODE_ENV] || '.env',
       load: [config],
       isGlobal: true,
+      validationSchema: Joi.object({
+        MYSQL_USER: Joi.string().required(),
+        DATABASE_HOST: Joi.string().required(),
+        MYSQL_DATABASE: Joi.string().required(),
+        MYSQL_PASSWORD: Joi.any().required(),
+        SYNCHONIZE_DATABASE: Joi.string().required(),
+        AUTO_LOAD_ENTITIES_DATABASE: Joi.string().required(),
+      }),
     }),
     DatabaseModule,
     StudentModule,

@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { studentRegisterMock } from '../../common/mocks';
+import { studentLoginMock, studentRegisterMock } from '../../common/mocks';
 import { AuthRepositoryService } from '../auth-repository.service';
 import { AuthController } from '../auth.controller';
 import { AuthService } from '../auth.service';
@@ -22,7 +22,7 @@ describe('AuthRepositoryService', () => {
   });
 
   it('repository.register - should be defined witch studentDto', () => {
-    repository.register(studentRegisterMock);
-    expect(repository.register).toBeCalledWith(studentRegisterMock);
+    repository.register(studentLoginMock);
+    expect(repository.register).toBeCalledWith(studentLoginMock);
   });
 });

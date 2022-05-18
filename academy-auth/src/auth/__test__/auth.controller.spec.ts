@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { studentLoginMock } from '../../common/mocks';
+import { studentLoginMock, studentRegisterMock } from '../../common/mocks';
 import { AuthController } from '../auth.controller';
 import { AuthService } from '../auth.service';
 
@@ -39,5 +39,18 @@ describe('AuthController', () => {
   it('service.register - should be defined witch studentDto', () => {
     service.register(studentLoginMock);
     expect(service.register).toBeCalledWith(studentLoginMock);
+  });
+
+  it('should return an array of cats', async () => {
+    jest
+      .spyOn(service, 'register')
+      .mockImplementation(async (studentLoginMock) => {
+        const { password, ...newUser } = studentLoginMock;
+        const newUserMock = { ...newUser, id: 1 };
+        return newUserMock;
+      });
+    expect(await service.register(studentLoginMock)).toEqual(
+      studentRegisterMock,
+    );
   });
 });

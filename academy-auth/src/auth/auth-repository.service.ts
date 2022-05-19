@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { StudentLCreateDto, StudentLoginDto } from './dto/studentLogin.dto';
 import { Student } from './entities/student.entity';
-import { hash } from 'bcryptjs';
+import { hash, compare } from 'bcryptjs';
 
 @Injectable()
 export class AuthRepositoryService {
@@ -11,10 +11,23 @@ export class AuthRepositoryService {
     @InjectRepository(Student)
     private readonly authRepo: Repository<Student>,
   ) {}
-  login(studentLogin: StudentLoginDto) {}
+  login(studentLogin: StudentLoginDto): StudentLoginDto {
+    return studentLogin;
+  }
 
   private async registerHash(password: string): Promise<string> {
     return await hash(password, 10);
+  }
+
+  async userValidate(userLogin: StudentLoginDto): Promise<StudentLCreateDto> {
+    const { email, password } = userLogin;
+    const user = await this.authRepo.findOne({ email });
+    const isMatch = await compare(password, user.password);
+    if (user && isMatch) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
   }
 
   async register(studentRegister: StudentLoginDto): Promise<StudentLCreateDto> {

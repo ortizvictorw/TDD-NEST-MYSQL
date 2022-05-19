@@ -6,7 +6,7 @@ export class Student {
   id: number;
 
   @Column()
-  userName: string;
+  username: string;
 
   @Column({ unique: true })
   email: string;

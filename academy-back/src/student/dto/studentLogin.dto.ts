@@ -4,7 +4,7 @@ import { ApiProperty } from '@nestjs/swagger'
 export class StudentRegisterDto {
   @IsString()
   @ApiProperty()
-  userName: string;
+  username: string;
   @IsEmail()
   @ApiProperty()
   email: string;

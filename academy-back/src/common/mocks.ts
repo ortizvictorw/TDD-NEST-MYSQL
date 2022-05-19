@@ -1,13 +1,13 @@
 import { EmailDuplicateError } from 'src/student/dto/reponse.dto';
 
 export const studentLoginMock = {
-  userName: 'Vcitor Ortiz',
+  username: 'Vcitor Ortiz',
   email: 'victor.com',
   password: '1234567',
 };
 
 export const studentRegisterMockError = {
-  userName: 'Vcitor Ortiz',
+  username: 'Vcitor Ortiz',
   email: 'victor.com',
   password: '1234567',
 };

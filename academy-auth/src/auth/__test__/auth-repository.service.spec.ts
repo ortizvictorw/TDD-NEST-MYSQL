@@ -28,13 +28,9 @@ describe('AuthRepositoryService', () => {
   });
 
   it('repository.login - should be return user', () => {
-    jest
-      .spyOn(repository, 'login')
-      .mockImplementation((studentLoginMock): StudentLoginDto => {
-        return studentLoginMock;
-      });
-    expect(repository.login(studentLoginMock)).toEqual(
-      studentLoginResponseMock,
-    );
+    jest.spyOn(repository, 'login').mockImplementation((studentLoginMock): StudentLoginDto => {
+      return studentLoginMock;
+    });
+    expect(repository.login(studentLoginMock)).toEqual(studentLoginResponseMock);
   });
 });

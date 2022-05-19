@@ -19,9 +19,10 @@ export class AuthRepositoryService {
     return await hash(password, 10);
   }
 
-  async userValidate(userLogin: StudentLoginDto): Promise<StudentLCreateDto> {
-    const { email, password } = userLogin;
+  async userValidate(email: string, password: string): Promise<StudentLCreateDto> {
     const user = await this.authRepo.findOne({ email });
+    console.debug(user);
+
     const isMatch = await compare(password, user.password);
     if (user && isMatch) {
       const { password, ...result } = user;
@@ -31,18 +32,18 @@ export class AuthRepositoryService {
   }
 
   async register(studentRegister: StudentLoginDto): Promise<StudentLCreateDto> {
-    const { password, userName, email } = studentRegister;
+    const { password, username: username, email } = studentRegister;
     const hasPasword = await this.registerHash(password);
     const newStudent = this.authRepo.create({
       password: hasPasword,
-      userName,
+      username,
       email,
     });
     const saveNewUser = await this.authRepo.save(newStudent);
     const saveUser: StudentLCreateDto = {
       id: saveNewUser.id,
       email: saveNewUser.email,
-      userName: saveNewUser.userName,
+      username: saveNewUser.username,
     };
     return saveUser;
   }

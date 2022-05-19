@@ -1,4 +1,9 @@
 {
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "printWidth": 120,
+  "singleAttributePerLine": false,
+  "prettier/prettier": ["error", {}, {
+    "usePrettierrc": false
+  }] 
 }

@@ -41,16 +41,12 @@ describe('AuthController', () => {
     expect(service.register).toBeCalledWith(studentLoginMock);
   });
 
-  it('should return an array of cats', async () => {
-    jest
-      .spyOn(service, 'register')
-      .mockImplementation(async (studentLoginMock) => {
-        const { password, ...newUser } = studentLoginMock;
-        const newUserMock = { ...newUser, id: 1 };
-        return newUserMock;
-      });
-    expect(await service.register(studentLoginMock)).toEqual(
-      studentRegisterMock,
-    );
+  it('should return new User', async () => {
+    jest.spyOn(service, 'register').mockImplementation(async (studentLoginMock) => {
+      const { password, ...newUser } = studentLoginMock;
+      const newUserMock = { ...newUser, id: 1 };
+      return newUserMock;
+    });
+    expect(await service.register(studentLoginMock)).toEqual(studentRegisterMock);
   });
 });

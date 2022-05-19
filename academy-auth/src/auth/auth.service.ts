@@ -5,12 +5,10 @@ import { StudentLCreateDto, StudentLoginDto } from './dto/studentLogin.dto';
 @Injectable()
 export class AuthService {
   constructor(private readonly authRepositoryService: AuthRepositoryService) {}
-  login(studentLogin: StudentLoginDto) {
+  login(studentLogin: StudentLoginDto): StudentLoginDto {
     return this.authRepositoryService.login(studentLogin);
   }
-  async register(
-    studentLogin: StudentLoginDto,
-  ): Promise<StudentLCreateDto | any> {
+  async register(studentLogin: StudentLoginDto): Promise<StudentLCreateDto | any> {
     try {
       return await this.authRepositoryService.register(studentLogin);
     } catch (error) {
